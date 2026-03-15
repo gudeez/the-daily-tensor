@@ -1,5 +1,6 @@
 .env
 data/seen.json
+data/x_cookies.json
 __pycache__/
 *.pyc
 .DS_Store
