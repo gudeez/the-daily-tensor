@@ -19,22 +19,31 @@ from scrapling.fetchers import StealthyFetcher
 # High-signal keyword queries for each vertical
 KEYWORD_SETS = {
     "AI": [
-        "artificial intelligence OR LLM OR generative AI",
-        "new AI model OR AI launch OR AI release",
-        "GPT OR Claude OR Gemini OR Llama announcement",
-        "open source AI OR foundation model",
-    ],
-    "Crypto": [
-        "crypto OR bitcoin OR ethereum OR defi",
-        "solana OR base chain OR web3 launch",
-        "token launch OR airdrop OR crypto regulation",
+        "(AI OR LLM OR GPT) (launch OR release OR announce OR breakthrough) min_faves:100 -airdrop -claim -giveaway -is:retweet",
+        "(OpenAI OR Anthropic OR Google OR Meta) AI min_faves:100 -airdrop -claim -giveaway -is:retweet",
+        "(open source AI OR foundation model OR transformer) min_faves:50 -airdrop -claim -giveaway -is:retweet",
+        "AI agent OR AI coding OR vibe coding min_faves:50 -airdrop -claim -giveaway -is:retweet",
     ],
     "Privacy": [
-        "data privacy OR surveillance OR encryption",
-        "GDPR OR data breach OR zero knowledge",
-        "end to end encryption OR privacy law",
+        "(privacy OR surveillance OR encryption) (law OR breach OR ruling) min_faves:50 -airdrop -claim -giveaway -is:retweet",
+        "(Signal OR Tor OR ProtonMail OR zero knowledge) min_faves:50 -airdrop -claim -giveaway -is:retweet",
+    ],
+    "Tech": [
+        "(tech layoff OR startup OR funding round) min_faves:100 -airdrop -claim -giveaway -is:retweet",
+        "(Apple OR Microsoft OR Google OR NVIDIA) (announce OR launch OR release) min_faves:100 -is:retweet",
     ],
 }
+
+# Minimum engagement to filter out noise (low threshold since scraping undercounts)
+MIN_ENGAGEMENT = 5
+
+# Spam indicators — posts containing these get filtered out
+SPAM_KEYWORDS = [
+    "airdrop", "claim now", "fill out this form", "giveaway", "free tokens",
+    "whitelist", "presale", "join now", "limited spots", "act fast",
+    "dm me", "send me", "drop your wallet", "100x", "1000x",
+    "sign up link", "register now", "don't miss out", "last chance",
+]
 
 
 def _load_seen():
@@ -133,6 +142,15 @@ def _extract_posts_from_page(page):
 
         raw_engagement = likes + (2 * retweets) + (3 * replies)
         velocity = raw_engagement / (hours_old ** 1.5)
+
+        # Filter: minimum engagement
+        if raw_engagement < MIN_ENGAGEMENT:
+            continue
+
+        # Filter: spam detection
+        text_lower = text.lower()
+        if any(spam in text_lower for spam in SPAM_KEYWORDS):
+            continue
 
         posts.append({
             "title": f"@{author}: {text[:80]}...",
