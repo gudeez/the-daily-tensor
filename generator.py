@@ -1,6 +1,10 @@
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
+
+# Central Standard Time (UTC-6) / Central Daylight Time (UTC-5)
+# Using CDT since DST is active in March
+CST = timezone(timedelta(hours=-5))
 from jinja2 import Environment, FileSystemLoader
 from config import EDITIONS_DIR, DATA_DIR, SEEN_FILE, MAX_STORIES, BASE_DIR
 from sources.rss import fetch_all_feeds
@@ -35,12 +39,12 @@ def _process_story(story):
 
 def build_edition(send_telegram=True):
     """Run the full pipeline: fetch -> process -> render -> publish."""
-    now = datetime.now(timezone.utc)
+    now = datetime.now(CST)
     date_str = now.strftime("%Y-%m-%d")
     date_fancy = now.strftime("%A, %B %d, %Y")
 
     # Calculate edition number (days since project start)
-    start = datetime(2026, 3, 14, tzinfo=timezone.utc)
+    start = datetime(2026, 3, 14, tzinfo=CST)
     edition_number = max(1, (now - start).days + 1)
 
     print(f"\n{'='*60}")
