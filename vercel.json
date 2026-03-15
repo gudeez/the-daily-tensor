@@ -1,4 +1,6 @@
 {
+  "framework": null,
+  "buildCommand": "",
   "outputDirectory": "editions",
   "rewrites": [
     { "source": "/", "destination": "/latest.html" }
