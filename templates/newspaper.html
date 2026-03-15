@@ -247,6 +247,31 @@
             letter-spacing: 1px;
         }
 
+        /* --- Read Aloud Button --- */
+        .read-aloud-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2c1810;
+            color: #f5f0e1;
+            border: 2px solid #8a7a6a;
+            padding: 12px 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 100;
+            letter-spacing: 1px;
+            transition: background 0.2s;
+        }
+
+        .read-aloud-btn:hover {
+            background: #4a3020;
+        }
+
+        .read-aloud-btn.playing {
+            background: #8b0000;
+        }
+
         /* --- Print --- */
         @media print {
             body { background: white; }
@@ -351,6 +376,7 @@
                 <div class="repo-card">
                     <div class="repo-name"><a href="{{ repo.url }}" target="_blank">{{ repo.title }}</a></div>
                     <div class="repo-meta">{{ repo.stars }} stars &middot; {{ repo.language }}</div>
+                    {% if repo.summary %}<div class="repo-desc" style="font-style: italic; color: #5a4a3a;">{{ repo.summary }}</div>{% endif %}
                     <div class="repo-desc">{{ repo.body }}</div>
                 </div>
                 {% endfor %}
@@ -364,5 +390,84 @@
             Printed by Automaton &middot; Powered by Qwen 3.5 &middot; &copy; {{ year }} The Daily Tensor
         </div>
     </div>
+
+    <button class="read-aloud-btn" id="readAloudBtn" onclick="toggleReadAloud()">
+        Read Aloud
+    </button>
+
+    <script>
+    let isPlaying = false;
+    let utterance = null;
+
+    function getAllText() {
+        const paper = document.querySelector('.paper');
+        const sections = [];
+
+        const editorial = paper.querySelector('.editorial p');
+        if (editorial) sections.push("Editor's Column. " + editorial.textContent);
+
+        paper.querySelectorAll('.headline').forEach(h => {
+            const parent = h.closest('.lead-story, .second-story, .col-story');
+            if (parent) {
+                const source = parent.querySelector('.story-source');
+                const body = parent.querySelector('.story-body');
+                let text = '';
+                if (source) text += source.textContent + '. ';
+                text += h.textContent + '. ';
+                if (body) text += body.textContent;
+                sections.push(text);
+            }
+        });
+
+        paper.querySelectorAll('.repo-card').forEach(card => {
+            const name = card.querySelector('.repo-name');
+            const meta = card.querySelector('.repo-meta');
+            const descs = card.querySelectorAll('.repo-desc');
+            let text = 'GitHub repository: ';
+            if (name) text += name.textContent + '. ';
+            if (meta) text += meta.textContent + '. ';
+            descs.forEach(d => text += d.textContent + '. ');
+            sections.push(text);
+        });
+
+        return sections.join('\n\n');
+    }
+
+    function toggleReadAloud() {
+        const btn = document.getElementById('readAloudBtn');
+
+        if (isPlaying) {
+            speechSynthesis.cancel();
+            isPlaying = false;
+            btn.textContent = 'Read Aloud';
+            btn.classList.remove('playing');
+            return;
+        }
+
+        const text = getAllText();
+        utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 1.0;
+        utterance.pitch = 0.9;
+
+        // Prefer a British English voice for the Victorian vibe
+        const voices = speechSynthesis.getVoices();
+        const british = voices.find(v => v.lang === 'en-GB') || voices.find(v => v.lang.startsWith('en'));
+        if (british) utterance.voice = british;
+
+        utterance.onend = () => {
+            isPlaying = false;
+            btn.textContent = 'Read Aloud';
+            btn.classList.remove('playing');
+        };
+
+        speechSynthesis.speak(utterance);
+        isPlaying = true;
+        btn.textContent = 'Stop Reading';
+        btn.classList.add('playing');
+    }
+
+    // Preload voices
+    speechSynthesis.getVoices();
+    </script>
 </body>
 </html>

@@ -81,7 +81,7 @@ def fetch_notable_repos():
                     "q": f"{topic} created:>{cutoff}",
                     "sort": "stars",
                     "order": "desc",
-                    "per_page": 5,
+                    "per_page": 15,
                 },
                 timeout=15,
                 headers={"User-Agent": "TheDailyTensor/1.0"},
@@ -116,4 +116,4 @@ def fetch_notable_repos():
             unique.append(s)
 
     unique.sort(key=lambda s: int(s.get("stars", "0")), reverse=True)
-    return unique[:10]
+    return unique[:30]

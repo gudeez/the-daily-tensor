@@ -2,5 +2,5 @@ requests
 beautifulsoup4
 feedparser
 jinja2
-tweepy
+scrapling
 python-telegram-bot

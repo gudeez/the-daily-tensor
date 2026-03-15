@@ -70,10 +70,18 @@ def build_edition(send_telegram=True):
             gh_stories_deduped.append(s)
     print(f"  Found {len(gh_stories_deduped)} GitHub repos")
 
-    # --- Select top stories ---
-    news_to_process = rss_stories[:MAX_STORIES]
-    x_to_process = x_stories_raw[:6]
-    gh_to_process = gh_stories_deduped[:6]
+    # --- Select top stories (cap per source for variety) ---
+    MAX_PER_SOURCE = 8
+    source_counts = {}
+    balanced_news = []
+    for s in rss_stories:
+        src = s["source"]
+        source_counts[src] = source_counts.get(src, 0) + 1
+        if source_counts[src] <= MAX_PER_SOURCE:
+            balanced_news.append(s)
+    news_to_process = balanced_news[:MAX_STORIES]
+    x_to_process = x_stories_raw[:20]
+    gh_to_process = gh_stories_deduped[:24]
 
     total = len(news_to_process) + len(x_to_process) + len(gh_to_process)
     if total == 0:

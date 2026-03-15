@@ -247,6 +247,31 @@
             letter-spacing: 1px;
         }
 
+        /* --- Read Aloud Button --- */
+        .read-aloud-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2c1810;
+            color: #f5f0e1;
+            border: 2px solid #8a7a6a;
+            padding: 12px 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 100;
+            letter-spacing: 1px;
+            transition: background 0.2s;
+        }
+
+        .read-aloud-btn:hover {
+            background: #4a3020;
+        }
+
+        .read-aloud-btn.playing {
+            background: #8b0000;
+        }
+
         /* --- Print --- */
         @media print {
             body { background: white; }
@@ -288,14 +313,14 @@
         <div class="lead-section">
             <div class="lead-story">
                 <div class="story-source">TechCrunch AI</div>
-                <div class="headline">US Army announces contract with Anduril worth up to $20B</div>
+                <div class="headline">Most Remarkable: US Army announces contract with Anduril worth up to $20B</div>
                 <div class="story-body"></div>
                 <a class="story-link" href="https://techcrunch.com/2026/03/14/us-army-announces-contract-with-anduril-worth-up-to-20b/" target="_blank">Continue reading &rarr;</a>
             </div>
             
             <div class="second-story" style="border-left: 1px solid #a09080; padding-left: 30px;">
                 <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Meta reportedly considering layoffs that could affect 20% of the company</div>
+                <div class="headline">Most Remarkable: Meta reportedly considering layoffs that could affect 20% of the company</div>
                 <div class="story-body"></div>
                 <a class="story-link" href="https://techcrunch.com/2026/03/14/meta-reportedly-considering-layoffs-that-could-affect-20-of-the-company/" target="_blank">Continue reading &rarr;</a>
             </div>
@@ -310,72 +335,268 @@
             
             <div class="col-story ">
                 <div class="story-source">TechCrunch AI</div>
-                <div class="headline">How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others</div>
+                <div class="headline">Most Remarkable: How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others</div>
                 <div class="story-body"></div>
                 <a class="story-link" href="https://techcrunch.com/2026/03/14/how-to-use-the-new-chatgpt-app-integrations-including-doordash-spotify-uber-and-others/" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">TechCrunch AI</div>
-                <div class="headline">‘Not built right the first time’ — Musk’s xAI is starting over again, again</div>
+                <div class="headline">Most Remarkable: ‘Not built right the first time’ — Musk’s xAI is starting over again, again</div>
                 <div class="story-body"></div>
                 <a class="story-link" href="https://techcrunch.com/2026/03/13/not-built-right-the-first-time-musks-xai-is-starting-over-again-again/" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Lawyer behind AI psychosis cases warns of mass casualty risks</div>
+                <div class="headline">Most Remarkable: Lawyer behind AI psychosis cases warns of mass casualty risks</div>
                 <div class="story-body"></div>
                 <a class="story-link" href="https://techcrunch.com/2026/03/13/lawyer-behind-ai-psychosis-cases-warns-of-mass-casualty-risks/" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Nyne, founded by a father-son duo, gives AI agents the human context they’re missing</div>
+                <div class="headline">Most Remarkable: Nyne, founded by a father-son duo, gives AI agents the human context they’re missing</div>
                 <div class="story-body"></div>
                 <a class="story-link" href="https://techcrunch.com/2026/03/13/nyne-founded-by-a-father-son-duo-gives-ai-agents-the-human-context-theyre-missing/" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">The Verge AI</div>
-                <div class="headline">Microsoft’s Copilot AI assistant is coming to current-gen Xbox consoles this year</div>
+                <div class="headline">Most Remarkable: Microsoft’s Copilot AI assistant is coming to current-gen Xbox consoles this year</div>
                 <div class="story-body"></div>
                 <a class="story-link" href="https://www.theverge.com/games/894799/microsoft-gaming-copilot-ai-xbox-consoles" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">Hugging Face</div>
-                <div class="headline">Beyond Semantic Similarity: Introducing NVIDIA NeMo Retriever’s Generalizable Agentic Retrieval Pipeline</div>
+                <div class="headline">Most Remarkable: Beyond Semantic Similarity: Introducing NVIDIA NeMo Retriever’s Generalizable Agentic Retrieval Pipeline</div>
                 <div class="story-body"></div>
                 <a class="story-link" href="https://huggingface.co/blog/nvidia/nemo-retriever-agentic-retrieval" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Steven Spielberg says he’s ‘never used AI’ in any of his films</div>
+                <div class="headline">Most Remarkable: Steven Spielberg says he’s ‘never used AI’ in any of his films</div>
                 <div class="story-body"></div>
                 <a class="story-link" href="https://techcrunch.com/2026/03/13/steven-spielberg-says-hes-never-used-ai-in-any-of-his-films/" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
                 <div class="story-source">TechCrunch AI</div>
-                <div class="headline">The biggest AI stories of the year (so far)</div>
+                <div class="headline">Most Remarkable: The biggest AI stories of the year (so far)</div>
                 <div class="story-body"></div>
                 <a class="story-link" href="https://techcrunch.com/2026/03/13/the-biggest-ai-stories-of-the-year-so-far/" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">The wild six weeks for NanoClaw’s creator that led to a deal with Docker</div>
+                <div class="story-source">MIT Tech Review AI</div>
+                <div class="headline">Most Remarkable: Why physical AI is becoming manufacturing’s next advantage</div>
                 <div class="story-body"></div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/13/the-wild-six-weeks-for-nanoclaws-creator-that-led-to-a-deal-with-docker/" target="_blank">Read more &rarr;</a>
+                <a class="story-link" href="https://www.technologyreview.com/2026/03/13/1134184/why-physical-ai-is-becoming-manufacturings-next-advantage/" target="_blank">Read more &rarr;</a>
             </div>
             
             <div class="col-story col-divider">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Spotify will let you edit your Taste Profile to control your recommendations</div>
+                <div class="story-source">MIT Tech Review AI</div>
+                <div class="headline">Most Remarkable: The Download: how AI is used for military targeting, and the Pentagon’s war on Claude</div>
                 <div class="story-body"></div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/13/spotify-will-let-you-edit-your-taste-profile-to-control-your-recommendations/" target="_blank">Read more &rarr;</a>
+                <a class="story-link" href="https://www.technologyreview.com/2026/03/13/1134278/the-download-defense-official-ai-chatbots-targeting-pentagon-claude-pollute-military-supply-chain/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">MIT Tech Review AI</div>
+                <div class="headline">Most Remarkable: Future AI chips could be built on glass</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.technologyreview.com/2026/03/13/1134230/future-ai-chips-could-be-built-on-glass/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">MIT Tech Review AI</div>
+                <div class="headline">Most Remarkable: A defense official reveals how AI chatbots could be used for targeting decisions</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.technologyreview.com/2026/03/12/1134243/defense-official-military-use-ai-chatbots-targeting-decisions/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">The Verge AI</div>
+                <div class="headline">Most Remarkable: Facebook Marketplace adds AI auto-replies for annoying ‘Is this still available?’ messages</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.theverge.com/tech/893907/facebook-marketplace-ai-auto-reply-listings" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">The Verge AI</div>
+                <div class="headline">Most Remarkable: Gemini’s task automation is here and it’s wild</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.theverge.com/tech/893820/gemini-task-automation-samsung-s26-google-pixel-10" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">The Verge AI</div>
+                <div class="headline">Most Remarkable: Anthropic&#8217;s Claude AI can respond with charts, diagrams, and other visuals now</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.theverge.com/ai-artificial-intelligence/893625/anthropic-claude-ai-charts-diagrams" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Google AI</div>
+                <div class="headline">Most Remarkable: How AI is helping improve heart health in rural Australia</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://blog.google/innovation-and-ai/technology/health/google-ai-heart-health-australia/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">The Verge AI</div>
+                <div class="headline">Most Remarkable: Anthropic doesn’t trust the Pentagon, and neither should you</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.theverge.com/podcast/893370/anthropic-pentagon-ai-mass-surveillance-nsa-privacy-spying" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">The Verge AI</div>
+                <div class="headline">Most Remarkable: Bespoke AI models are the next big thing in filmmaking</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.theverge.com/streaming/893538/ai-model-netflix-interpositive-ben-affleck" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">MIT Tech Review AI</div>
+                <div class="headline">Most Remarkable: The Download: Early adopters cash in on China’s OpenClaw craze, and US batteries slump</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.technologyreview.com/2026/03/12/1134207/the-download-china-openclaw-ai-craze-us-battery-industry-downturn/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">The Verge AI</div>
+                <div class="headline">Most Remarkable: Microsoft’s Copilot Health can connect to your medical records and wearables</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.theverge.com/tech/893594/microsoft-copilot-health-launch" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">MIT Tech Review AI</div>
+                <div class="headline">Most Remarkable: Pragmatic by design: Engineering AI for the real world</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.technologyreview.com/2026/03/12/1133675/pragmatic-by-design-engineering-ai-for-the-real-world/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">The Verge AI</div>
+                <div class="headline">Most Remarkable: You can now ask Google Maps ‘complex, real-world questions’ — and Gemini will answer</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.theverge.com/tech/893262/google-maps-gemini-ai-ask-maps-immersive-navigation" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">MIT Tech Review AI</div>
+                <div class="headline">Most Remarkable: Brutal times for the US battery industry</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.technologyreview.com/2026/03/12/1134197/us-battery-industry/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">MIT Tech Review AI</div>
+                <div class="headline">Most Remarkable: Hustlers are cashing in on China’s OpenClaw AI craze</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://www.technologyreview.com/2026/03/11/1134179/china-openclaw-gold-rush/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Google AI</div>
+                <div class="headline">Most Remarkable: Gemini in Google Sheets just achieved state-of-the-art performance.</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://blog.google/products-and-platforms/products/workspace/gemini-google-sheets-state-of-the-art/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Hugging Face</div>
+                <div class="headline">Most Remarkable: Introducing Storage Buckets on the Hugging Face Hub</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://huggingface.co/blog/storage-buckets" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Hugging Face</div>
+                <div class="headline">Most Remarkable: Keep the Tokens Flowing: Lessons from 16 Open-Source RL Libraries</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://huggingface.co/blog/async-rl-training-landscape" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Hugging Face</div>
+                <div class="headline">Most Remarkable: Granite 4.0 1B Speech: Compact, Multilingual, and Built for the Edge</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://huggingface.co/blog/ibm-granite/granite-4-speech" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Hugging Face</div>
+                <div class="headline">Most Remarkable: Ulysses Sequence Parallelism: Training with Million-Token Contexts</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://huggingface.co/blog/ulysses-sp" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Hugging Face</div>
+                <div class="headline">Most Remarkable: LeRobot v0.5.0: Scaling Every Dimension</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://huggingface.co/blog/lerobot-release-v050" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Google AI</div>
+                <div class="headline">Most Remarkable: How our open-source AI model SpeciesNet is helping to promote wildlife conservation</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://blog.google/company-news/outreach-and-initiatives/sustainability/speciesnet-open-source-ai-wildlife/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Google AI</div>
+                <div class="headline">Most Remarkable: Ask a Techspert: How does AI understand my visual searches?</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://blog.google/company-news/inside-google/googlers/how-google-ai-visual-search-works/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Google AI</div>
+                <div class="headline">Most Remarkable: The latest AI news we announced in February</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://blog.google/innovation-and-ai/products/google-ai-updates-february-2026/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Hugging Face</div>
+                <div class="headline">Most Remarkable: Bringing Robotics AI to Embedded Platforms: Dataset Recording, VLA Fine‑Tuning, and On‑Device Optimizations</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://huggingface.co/blog/nxp/bringing-robotics-ai-to-embedded-platforms" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Hugging Face</div>
+                <div class="headline">Most Remarkable: Introducing Modular Diffusers - Composable Building Blocks for Diffusion Pipelines</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://huggingface.co/blog/modular-diffusers" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Google AI</div>
+                <div class="headline">Most Remarkable: Use Canvas in AI Mode to get things done and bring your ideas to life, right in Search.</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://blog.google/products-and-platforms/products/search/ai-mode-canvas-writing-coding/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Google AI</div>
+                <div class="headline">Most Remarkable: Create new worlds in Project Genie with these 4 tips</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/tips-prompt-writing-project-genie/" target="_blank">Read more &rarr;</a>
+            </div>
+            
+            <div class="col-story col-divider">
+                <div class="story-source">Google AI</div>
+                <div class="headline">Most Remarkable: Gemini 3.1 Flash-Lite: Built for intelligence at scale</div>
+                <div class="story-body"></div>
+                <a class="story-link" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/" target="_blank">Read more &rarr;</a>
             </div>
             
         </div>
@@ -393,37 +614,85 @@
                 
                 <div class="repo-card">
                     <div class="repo-name"><a href="https://github.com/volcengine/OpenViking" target="_blank">volcengine/OpenViking</a></div>
-                    <div class="repo-meta">10679 stars &middot; Python</div>
+                    <div class="repo-meta">10700 stars &middot; Python</div>
+                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">OpenViking is an open-source context database designed specifically for AI Agents(such as openclaw). OpenViking unifies the management of context (memory, resources, and skills) that Agents need through a file system paradigm, enabling hierarchical context delivery and self-evolving.</div>
                     <div class="repo-desc"></div>
                 </div>
                 
                 <div class="repo-card">
                     <div class="repo-name"><a href="https://github.com/p-e-w/heretic" target="_blank">p-e-w/heretic</a></div>
-                    <div class="repo-meta">13810 stars &middot; Python</div>
+                    <div class="repo-meta">13825 stars &middot; Python</div>
+                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">Fully automatic censorship removal for language models</div>
                     <div class="repo-desc"></div>
                 </div>
                 
                 <div class="repo-card">
                     <div class="repo-name"><a href="https://github.com/langflow-ai/openrag" target="_blank">langflow-ai/openrag</a></div>
-                    <div class="repo-meta">2732 stars &middot; Python</div>
+                    <div class="repo-meta">2737 stars &middot; Python</div>
+                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">OpenRAG is a comprehensive, single package Retrieval-Augmented Generation platform built on Langflow, Docling, and Opensearch.</div>
                     <div class="repo-desc"></div>
                 </div>
                 
                 <div class="repo-card">
                     <div class="repo-name"><a href="https://github.com/lightpanda-io/browser" target="_blank">lightpanda-io/browser</a></div>
-                    <div class="repo-meta">17151 stars &middot; Zig</div>
+                    <div class="repo-meta">17167 stars &middot; Zig</div>
+                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">Lightpanda: the headless browser designed for AI and automation</div>
                     <div class="repo-desc"></div>
                 </div>
                 
                 <div class="repo-card">
                     <div class="repo-name"><a href="https://github.com/msitarzewski/agency-agents" target="_blank">msitarzewski/agency-agents</a></div>
-                    <div class="repo-meta">43916 stars &middot; Shell</div>
+                    <div class="repo-meta">43947 stars &middot; Shell</div>
+                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.</div>
                     <div class="repo-desc"></div>
                 </div>
                 
                 <div class="repo-card">
                     <div class="repo-name"><a href="https://github.com/InsForge/InsForge" target="_blank">InsForge/InsForge</a></div>
-                    <div class="repo-meta">4200 stars &middot; TypeScript</div>
+                    <div class="repo-meta">4210 stars &middot; TypeScript</div>
+                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">Give agents everything they need to ship fullstack apps. The backend built for agentic development.</div>
+                    <div class="repo-desc"></div>
+                </div>
+                
+                <div class="repo-card">
+                    <div class="repo-name"><a href="https://github.com/obra/superpowers" target="_blank">obra/superpowers</a></div>
+                    <div class="repo-meta">83595 stars &middot; Shell</div>
+                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">An agentic skills framework & software development methodology that works.</div>
+                    <div class="repo-desc"></div>
+                </div>
+                
+                <div class="repo-card">
+                    <div class="repo-name"><a href="https://github.com/matteorigodanza/cryto-trading-ai-assistant" target="_blank">matteorigodanza/cryto-trading-ai-assistant</a></div>
+                    <div class="repo-meta">62 stars &middot; Python</div>
+                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">AI guardian for manual crypto traders — risk monitoring, strategy validation & emotional trading detection. No trade execution.</div>
+                    <div class="repo-desc"></div>
+                </div>
+                
+                <div class="repo-card">
+                    <div class="repo-name"><a href="https://github.com/delmore77/ai-automated-trading-bot" target="_blank">delmore77/ai-automated-trading-bot</a></div>
+                    <div class="repo-meta">34 stars &middot; Python</div>
+                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">TradingView webhook bot for manual traders – execute alerts on Binance, Bybit, OKX, and Hyperliquid with risk limits, TP/SL, trailing stop, and optional AI review.</div>
+                    <div class="repo-desc"></div>
+                </div>
+                
+                <div class="repo-card">
+                    <div class="repo-name"><a href="https://github.com/Ashfaqbs/TinyLLM-usecases" target="_blank">Ashfaqbs/TinyLLM-usecases</a></div>
+                    <div class="repo-meta">15 stars &middot; Python</div>
+                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">a collection of tiny llms with usecases</div>
+                    <div class="repo-desc"></div>
+                </div>
+                
+                <div class="repo-card">
+                    <div class="repo-name"><a href="https://github.com/evgenii-engineer/openLight" target="_blank">evgenii-engineer/openLight</a></div>
+                    <div class="repo-meta">15 stars &middot; Go</div>
+                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">Lightweight AI agent runtime for Raspberry Pi and homelabs, built around deterministic skills and local LLMs.</div>
+                    <div class="repo-desc"></div>
+                </div>
+                
+                <div class="repo-card">
+                    <div class="repo-name"><a href="https://github.com/THUDM/IndexCache" target="_blank">THUDM/IndexCache</a></div>
+                    <div class="repo-meta">11 stars &middot; </div>
+                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse</div>
                     <div class="repo-desc"></div>
                 </div>
                 

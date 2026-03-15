@@ -54,17 +54,25 @@ Write ONLY the summary, no preamble:"""
 def generate_headline(story):
     """Generate a dramatic 1880s-style headline."""
     prompt = f"""/no_think
-Rewrite this headline in the style of an 1880s newspaper. Make it dramatic and punchy. Use title case. Keep it under 15 words. Do not use quotation marks.
+You MUST rewrite this headline completely in the dramatic style of an 1880s newspaper. Do NOT repeat the original headline. Make it sensational, Victorian, and punchy. Use title case. Keep it under 15 words.
 
 Original: {story['title']}
 Context: {story.get('summary', '')[:200]}
 
-Write ONLY the headline, nothing else:"""
+Example rewrites:
+- "Meta lays off employees" -> "Great Upheaval at Meta as Thousands Cast Into the Streets"
+- "New AI model released" -> "Astonishing Mechanical Brain Unveiled to Thunderous Acclaim"
+- "OpenAI raises funding" -> "Vast Fortune Pledged to the Architects of Artificial Thought"
+
+Your dramatic Victorian rewrite:"""
 
     result = _generate(prompt, max_tokens=50)
     # Clean up - remove quotes, extra whitespace
     result = result.strip('"\'').strip()
-    return result if result else story["title"]
+    # If the LLM just returned the original, flag it
+    if not result or result.lower() == story["title"].lower():
+        return f"Most Remarkable: {story['title']}"
+    return result
 
 
 def editorialize(stories):
