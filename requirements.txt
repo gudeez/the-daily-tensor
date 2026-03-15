@@ -1,0 +1,6 @@
+requests
+beautifulsoup4
+feedparser
+jinja2
+tweepy
+python-telegram-bot

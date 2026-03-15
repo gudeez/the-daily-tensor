@@ -1,0 +1,6 @@
+{
+  "outputDirectory": "editions",
+  "rewrites": [
+    { "source": "/", "destination": "/latest.html" }
+  ]
+}

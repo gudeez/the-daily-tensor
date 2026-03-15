@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Tensor — {{ date }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #f5f0e1;
+            color: #2c1810;
+            font-family: 'Libre Baskerville', 'Times New Roman', serif;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .paper {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 40px 50px;
+            background: #faf6eb;
+            border: 1px solid #d4c9a8;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- Masthead --- */
+        .masthead {
+            text-align: center;
+            border-bottom: 4px double #2c1810;
+            padding-bottom: 15px;
+            margin-bottom: 5px;
+        }
+
+        .masthead-rule-top {
+            border: none;
+            border-top: 1px solid #2c1810;
+            margin-bottom: 8px;
+        }
+
+        .masthead h1 {
+            font-family: 'UnifrakturMaguntia', 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .masthead .subtitle {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-size: 14px;
+            margin: 5px 0;
+            color: #5a4a3a;
+        }
+
+        .masthead-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 8px;
+            color: #5a4a3a;
+        }
+
+        /* --- Ornamental Rules --- */
+        .ornament {
+            text-align: center;
+            margin: 15px 0;
+            font-size: 18px;
+            color: #8a7a6a;
+        }
+
+        .thick-rule {
+            border: none;
+            border-top: 3px solid #2c1810;
+            margin: 15px 0;
+        }
+
+        .thin-rule {
+            border: none;
+            border-top: 1px solid #a09080;
+            margin: 12px 0;
+        }
+
+        /* --- Editorial --- */
+        .editorial {
+            border: 2px solid #2c1810;
+            padding: 20px 25px;
+            margin: 20px 0;
+            background: #f0ead8;
+        }
+
+        .editorial h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .editorial p {
+            font-style: italic;
+            text-align: justify;
+        }
+
+        /* --- Story Sections --- */
+        .lead-section {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .lead-story .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+
+        .second-story .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .story-source {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8a7a6a;
+            margin-bottom: 8px;
+        }
+
+        .story-body {
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .story-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #5a4a3a;
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        .story-link:hover {
+            color: #2c1810;
+            text-decoration: underline;
+        }
+
+        /* --- Column Grid --- */
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+            margin: 20px 0;
+        }
+
+        .col-story .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 8px;
+        }
+
+        .col-story .story-body {
+            font-size: 13.5px;
+        }
+
+        .col-divider {
+            border-left: 1px solid #a09080;
+            padding-left: 25px;
+        }
+
+        /* --- GitHub Dispatch --- */
+        .github-section {
+            margin: 25px 0;
+        }
+
+        .github-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .github-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .repo-card {
+            border: 1px solid #c4b998;
+            padding: 15px;
+            background: #f0ead8;
+        }
+
+        .repo-card .repo-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .repo-card .repo-name a {
+            color: #2c1810;
+            text-decoration: none;
+        }
+
+        .repo-card .repo-name a:hover {
+            text-decoration: underline;
+        }
+
+        .repo-meta {
+            font-size: 11px;
+            color: #8a7a6a;
+            margin: 5px 0;
+        }
+
+        .repo-desc {
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 4px double #2c1810;
+            font-size: 11px;
+            color: #8a7a6a;
+            letter-spacing: 1px;
+        }
+
+        /* --- Print --- */
+        @media print {
+            body { background: white; }
+            .paper { box-shadow: none; border: none; margin: 0; padding: 20px; }
+        }
+
+        /* --- Mobile --- */
+        @media (max-width: 700px) {
+            .paper { padding: 20px 15px; margin: 10px; }
+            .masthead h1 { font-size: 36px; }
+            .lead-section { grid-template-columns: 1fr; }
+            .three-col { grid-template-columns: 1fr; }
+            .github-grid { grid-template-columns: 1fr; }
+            .col-divider { border-left: none; padding-left: 0; border-top: 1px solid #a09080; padding-top: 15px; }
+            .lead-story .headline { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="paper">
+        <!-- Masthead -->
+        <header class="masthead">
+            <hr class="masthead-rule-top">
+            <h1>The Daily Tensor</h1>
+            <div class="subtitle">&ldquo;All the Intelligence That&rsquo;s Fit to Print&rdquo;</div>
+            <div class="masthead-meta">
+                <span>Vol. I &middot; No. {{ edition_number }}</span>
+                <span>{{ date_fancy }}</span>
+                <span>Price: Free (as in Freedom)</span>
+            </div>
+        </header>
+
+        <!-- Editor's Column -->
+        {% if editorial %}
+        <div class="editorial">
+            <h2>&diams; Editor&rsquo;s Column &diams;</h2>
+            <p>{{ editorial }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Lead Stories -->
+        {% if news_stories|length > 0 %}
+        <hr class="thick-rule">
+        <div class="lead-section">
+            <div class="lead-story">
+                <div class="story-source">{{ news_stories[0].source }}</div>
+                <div class="headline">{{ news_stories[0].headline }}</div>
+                <div class="story-body">{{ news_stories[0].body }}</div>
+                <a class="story-link" href="{{ news_stories[0].url }}" target="_blank">Continue reading &rarr;</a>
+            </div>
+            {% if news_stories|length > 1 %}
+            <div class="second-story" style="border-left: 1px solid #a09080; padding-left: 30px;">
+                <div class="story-source">{{ news_stories[1].source }}</div>
+                <div class="headline">{{ news_stories[1].headline }}</div>
+                <div class="story-body">{{ news_stories[1].body }}</div>
+                <a class="story-link" href="{{ news_stories[1].url }}" target="_blank">Continue reading &rarr;</a>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Remaining News Stories -->
+        {% if news_stories|length > 2 %}
+        <hr class="thick-rule">
+        <div class="three-col">
+            {% for story in news_stories[2:] %}
+            <div class="col-story {% if not loop.first %}col-divider{% endif %}">
+                <div class="story-source">{{ story.source }}</div>
+                <div class="headline">{{ story.headline }}</div>
+                <div class="story-body">{{ story.body }}</div>
+                <a class="story-link" href="{{ story.url }}" target="_blank">Read more &rarr;</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- X/Twitter Dispatches -->
+        {% if x_stories|length > 0 %}
+        <hr class="thick-rule">
+        <div class="github-section">
+            <h2>&diams; Dispatches from the Wire &diams;</h2>
+            <div class="three-col">
+                {% for story in x_stories %}
+                <div class="col-story {% if not loop.first %}col-divider{% endif %}">
+                    <div class="story-source">{{ story.source }}</div>
+                    <div class="headline">{{ story.headline }}</div>
+                    <div class="story-body">{{ story.body }}</div>
+                    <a class="story-link" href="{{ story.url }}" target="_blank">View dispatch &rarr;</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- GitHub Dispatch -->
+        {% if github_stories|length > 0 %}
+        <hr class="thick-rule">
+        <div class="github-section">
+            <h2>&diams; The GitHub Dispatch &diams;</h2>
+            <div class="github-grid">
+                {% for repo in github_stories %}
+                <div class="repo-card">
+                    <div class="repo-name"><a href="{{ repo.url }}" target="_blank">{{ repo.title }}</a></div>
+                    <div class="repo-meta">{{ repo.stars }} stars &middot; {{ repo.language }}</div>
+                    <div class="repo-desc">{{ repo.body }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="ornament">&mdash; &diams; &mdash;</div>
+            Printed by Automaton &middot; Powered by Qwen 3.5 &middot; &copy; {{ year }} The Daily Tensor
+        </div>
+    </div>
+</body>
+</html>
