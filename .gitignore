@@ -5,3 +5,5 @@ __pycache__/
 *.pyc
 .DS_Store
 .vercel
+lightpanda-x86_64-linux.tar.gz
+test_lightpanda*.py

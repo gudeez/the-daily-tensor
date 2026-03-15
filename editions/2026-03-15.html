@@ -7,11 +7,43 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #f5f0e1;
+            --text: #2c1810;
+            --paper: #faf6eb;
+            --paper-border: #d4c9a8;
+            --paper-shadow: rgba(0,0,0,0.1);
+            --accent: #5a4a3a;
+            --muted: #8a7a6a;
+            --rule: #a09080;
+            --editorial-bg: #f0ead8;
+            --card-border: #c4b998;
+            --btn-bg: #2c1810;
+            --btn-text: #f5f0e1;
+            --btn-hover: #4a3020;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1a1410;
+            --text: #d4c4a8;
+            --paper: #241e16;
+            --paper-border: #3a3228;
+            --paper-shadow: rgba(0,0,0,0.4);
+            --accent: #b0a48e;
+            --muted: #8a7e68;
+            --rule: #4a4238;
+            --editorial-bg: #2a2218;
+            --card-border: #3a3228;
+            --btn-bg: #d4c4a8;
+            --btn-text: #1a1410;
+            --btn-hover: #c4b498;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: #f5f0e1;
-            color: #2c1810;
+            background: var(--bg);
+            color: var(--text);
             font-family: 'Libre Baskerville', 'Times New Roman', serif;
             font-size: 15px;
             line-height: 1.6;
@@ -21,22 +53,22 @@
             max-width: 960px;
             margin: 20px auto;
             padding: 40px 50px;
-            background: #faf6eb;
-            border: 1px solid #d4c9a8;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            background: var(--paper);
+            border: 1px solid var(--paper-border);
+            box-shadow: 0 2px 20px var(--paper-shadow);
         }
 
         /* --- Masthead --- */
         .masthead {
             text-align: center;
-            border-bottom: 4px double #2c1810;
+            border-bottom: 4px double var(--text);
             padding-bottom: 15px;
             margin-bottom: 5px;
         }
 
         .masthead-rule-top {
             border: none;
-            border-top: 1px solid #2c1810;
+            border-top: 1px solid var(--text);
             margin-bottom: 8px;
         }
 
@@ -53,7 +85,7 @@
             font-style: italic;
             font-size: 14px;
             margin: 5px 0;
-            color: #5a4a3a;
+            color: var(--accent);
         }
 
         .masthead-meta {
@@ -63,7 +95,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-top: 8px;
-            color: #5a4a3a;
+            color: var(--accent);
         }
 
         /* --- Ornamental Rules --- */
@@ -71,27 +103,27 @@
             text-align: center;
             margin: 15px 0;
             font-size: 18px;
-            color: #8a7a6a;
+            color: var(--muted);
         }
 
         .thick-rule {
             border: none;
-            border-top: 3px solid #2c1810;
+            border-top: 3px solid var(--text);
             margin: 15px 0;
         }
 
         .thin-rule {
             border: none;
-            border-top: 1px solid #a09080;
+            border-top: 1px solid var(--rule);
             margin: 12px 0;
         }
 
         /* --- Editorial --- */
         .editorial {
-            border: 2px solid #2c1810;
+            border: 2px solid var(--text);
             padding: 20px 25px;
             margin: 20px 0;
-            background: #f0ead8;
+            background: var(--editorial-bg);
         }
 
         .editorial h2 {
@@ -136,7 +168,7 @@
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #8a7a6a;
+            color: var(--muted);
             margin-bottom: 8px;
         }
 
@@ -149,13 +181,13 @@
             display: inline-block;
             margin-top: 8px;
             font-size: 12px;
-            color: #5a4a3a;
+            color: var(--accent);
             text-decoration: none;
             font-style: italic;
         }
 
         .story-link:hover {
-            color: #2c1810;
+            color: var(--text);
             text-decoration: underline;
         }
 
@@ -180,7 +212,7 @@
         }
 
         .col-divider {
-            border-left: 1px solid #a09080;
+            border-left: 1px solid var(--rule);
             padding-left: 25px;
         }
 
@@ -205,9 +237,9 @@
         }
 
         .repo-card {
-            border: 1px solid #c4b998;
+            border: 1px solid var(--card-border);
             padding: 15px;
-            background: #f0ead8;
+            background: var(--editorial-bg);
         }
 
         .repo-card .repo-name {
@@ -217,7 +249,7 @@
         }
 
         .repo-card .repo-name a {
-            color: #2c1810;
+            color: var(--text);
             text-decoration: none;
         }
 
@@ -227,7 +259,7 @@
 
         .repo-meta {
             font-size: 11px;
-            color: #8a7a6a;
+            color: var(--muted);
             margin: 5px 0;
         }
 
@@ -241,9 +273,9 @@
             text-align: center;
             margin-top: 30px;
             padding-top: 15px;
-            border-top: 4px double #2c1810;
+            border-top: 4px double var(--text);
             font-size: 11px;
-            color: #8a7a6a;
+            color: var(--muted);
             letter-spacing: 1px;
         }
 
@@ -252,9 +284,9 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: #2c1810;
-            color: #f5f0e1;
-            border: 2px solid #8a7a6a;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: 2px solid var(--muted);
             padding: 12px 20px;
             font-family: 'Playfair Display', serif;
             font-size: 14px;
@@ -265,7 +297,28 @@
         }
 
         .read-aloud-btn:hover {
-            background: #4a3020;
+            background: var(--btn-hover);
+        }
+
+        /* --- Theme Toggle --- */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: 2px solid var(--muted);
+            padding: 10px 16px;
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 100;
+            transition: background 0.2s;
+            line-height: 1;
+        }
+
+        .theme-toggle:hover {
+            background: var(--btn-hover);
         }
 
         .read-aloud-btn.playing {
@@ -285,7 +338,7 @@
             .lead-section { grid-template-columns: 1fr; }
             .three-col { grid-template-columns: 1fr; }
             .github-grid { grid-template-columns: 1fr; }
-            .col-divider { border-left: none; padding-left: 0; border-top: 1px solid #a09080; padding-top: 15px; }
+            .col-divider { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 15px; }
             .lead-story .headline { font-size: 24px; }
         }
     </style>
@@ -309,297 +362,8 @@
 
         <!-- Lead Stories -->
         
-        <hr class="thick-rule">
-        <div class="lead-section">
-            <div class="lead-story">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Most Remarkable: US Army announces contract with Anduril worth up to $20B</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/14/us-army-announces-contract-with-anduril-worth-up-to-20b/" target="_blank">Continue reading &rarr;</a>
-            </div>
-            
-            <div class="second-story" style="border-left: 1px solid #a09080; padding-left: 30px;">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Most Remarkable: Meta reportedly considering layoffs that could affect 20% of the company</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/14/meta-reportedly-considering-layoffs-that-could-affect-20-of-the-company/" target="_blank">Continue reading &rarr;</a>
-            </div>
-            
-        </div>
-        
 
         <!-- Remaining News Stories -->
-        
-        <hr class="thick-rule">
-        <div class="three-col">
-            
-            <div class="col-story ">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Most Remarkable: How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/14/how-to-use-the-new-chatgpt-app-integrations-including-doordash-spotify-uber-and-others/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Most Remarkable: ‘Not built right the first time’ — Musk’s xAI is starting over again, again</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/13/not-built-right-the-first-time-musks-xai-is-starting-over-again-again/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Most Remarkable: Lawyer behind AI psychosis cases warns of mass casualty risks</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/13/lawyer-behind-ai-psychosis-cases-warns-of-mass-casualty-risks/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Most Remarkable: Nyne, founded by a father-son duo, gives AI agents the human context they’re missing</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/13/nyne-founded-by-a-father-son-duo-gives-ai-agents-the-human-context-theyre-missing/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Verge AI</div>
-                <div class="headline">Most Remarkable: Microsoft’s Copilot AI assistant is coming to current-gen Xbox consoles this year</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.theverge.com/games/894799/microsoft-gaming-copilot-ai-xbox-consoles" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Hugging Face</div>
-                <div class="headline">Most Remarkable: Beyond Semantic Similarity: Introducing NVIDIA NeMo Retriever’s Generalizable Agentic Retrieval Pipeline</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://huggingface.co/blog/nvidia/nemo-retriever-agentic-retrieval" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Most Remarkable: Steven Spielberg says he’s ‘never used AI’ in any of his films</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/13/steven-spielberg-says-hes-never-used-ai-in-any-of-his-films/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">TechCrunch AI</div>
-                <div class="headline">Most Remarkable: The biggest AI stories of the year (so far)</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://techcrunch.com/2026/03/13/the-biggest-ai-stories-of-the-year-so-far/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">MIT Tech Review AI</div>
-                <div class="headline">Most Remarkable: Why physical AI is becoming manufacturing’s next advantage</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.technologyreview.com/2026/03/13/1134184/why-physical-ai-is-becoming-manufacturings-next-advantage/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">MIT Tech Review AI</div>
-                <div class="headline">Most Remarkable: The Download: how AI is used for military targeting, and the Pentagon’s war on Claude</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.technologyreview.com/2026/03/13/1134278/the-download-defense-official-ai-chatbots-targeting-pentagon-claude-pollute-military-supply-chain/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">MIT Tech Review AI</div>
-                <div class="headline">Most Remarkable: Future AI chips could be built on glass</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.technologyreview.com/2026/03/13/1134230/future-ai-chips-could-be-built-on-glass/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">MIT Tech Review AI</div>
-                <div class="headline">Most Remarkable: A defense official reveals how AI chatbots could be used for targeting decisions</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.technologyreview.com/2026/03/12/1134243/defense-official-military-use-ai-chatbots-targeting-decisions/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Verge AI</div>
-                <div class="headline">Most Remarkable: Facebook Marketplace adds AI auto-replies for annoying ‘Is this still available?’ messages</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.theverge.com/tech/893907/facebook-marketplace-ai-auto-reply-listings" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Verge AI</div>
-                <div class="headline">Most Remarkable: Gemini’s task automation is here and it’s wild</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.theverge.com/tech/893820/gemini-task-automation-samsung-s26-google-pixel-10" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Verge AI</div>
-                <div class="headline">Most Remarkable: Anthropic&#8217;s Claude AI can respond with charts, diagrams, and other visuals now</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.theverge.com/ai-artificial-intelligence/893625/anthropic-claude-ai-charts-diagrams" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Google AI</div>
-                <div class="headline">Most Remarkable: How AI is helping improve heart health in rural Australia</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://blog.google/innovation-and-ai/technology/health/google-ai-heart-health-australia/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Verge AI</div>
-                <div class="headline">Most Remarkable: Anthropic doesn’t trust the Pentagon, and neither should you</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.theverge.com/podcast/893370/anthropic-pentagon-ai-mass-surveillance-nsa-privacy-spying" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Verge AI</div>
-                <div class="headline">Most Remarkable: Bespoke AI models are the next big thing in filmmaking</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.theverge.com/streaming/893538/ai-model-netflix-interpositive-ben-affleck" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">MIT Tech Review AI</div>
-                <div class="headline">Most Remarkable: The Download: Early adopters cash in on China’s OpenClaw craze, and US batteries slump</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.technologyreview.com/2026/03/12/1134207/the-download-china-openclaw-ai-craze-us-battery-industry-downturn/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Verge AI</div>
-                <div class="headline">Most Remarkable: Microsoft’s Copilot Health can connect to your medical records and wearables</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.theverge.com/tech/893594/microsoft-copilot-health-launch" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">MIT Tech Review AI</div>
-                <div class="headline">Most Remarkable: Pragmatic by design: Engineering AI for the real world</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.technologyreview.com/2026/03/12/1133675/pragmatic-by-design-engineering-ai-for-the-real-world/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">The Verge AI</div>
-                <div class="headline">Most Remarkable: You can now ask Google Maps ‘complex, real-world questions’ — and Gemini will answer</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.theverge.com/tech/893262/google-maps-gemini-ai-ask-maps-immersive-navigation" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">MIT Tech Review AI</div>
-                <div class="headline">Most Remarkable: Brutal times for the US battery industry</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.technologyreview.com/2026/03/12/1134197/us-battery-industry/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">MIT Tech Review AI</div>
-                <div class="headline">Most Remarkable: Hustlers are cashing in on China’s OpenClaw AI craze</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://www.technologyreview.com/2026/03/11/1134179/china-openclaw-gold-rush/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Google AI</div>
-                <div class="headline">Most Remarkable: Gemini in Google Sheets just achieved state-of-the-art performance.</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://blog.google/products-and-platforms/products/workspace/gemini-google-sheets-state-of-the-art/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Hugging Face</div>
-                <div class="headline">Most Remarkable: Introducing Storage Buckets on the Hugging Face Hub</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://huggingface.co/blog/storage-buckets" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Hugging Face</div>
-                <div class="headline">Most Remarkable: Keep the Tokens Flowing: Lessons from 16 Open-Source RL Libraries</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://huggingface.co/blog/async-rl-training-landscape" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Hugging Face</div>
-                <div class="headline">Most Remarkable: Granite 4.0 1B Speech: Compact, Multilingual, and Built for the Edge</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://huggingface.co/blog/ibm-granite/granite-4-speech" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Hugging Face</div>
-                <div class="headline">Most Remarkable: Ulysses Sequence Parallelism: Training with Million-Token Contexts</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://huggingface.co/blog/ulysses-sp" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Hugging Face</div>
-                <div class="headline">Most Remarkable: LeRobot v0.5.0: Scaling Every Dimension</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://huggingface.co/blog/lerobot-release-v050" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Google AI</div>
-                <div class="headline">Most Remarkable: How our open-source AI model SpeciesNet is helping to promote wildlife conservation</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://blog.google/company-news/outreach-and-initiatives/sustainability/speciesnet-open-source-ai-wildlife/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Google AI</div>
-                <div class="headline">Most Remarkable: Ask a Techspert: How does AI understand my visual searches?</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://blog.google/company-news/inside-google/googlers/how-google-ai-visual-search-works/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Google AI</div>
-                <div class="headline">Most Remarkable: The latest AI news we announced in February</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://blog.google/innovation-and-ai/products/google-ai-updates-february-2026/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Hugging Face</div>
-                <div class="headline">Most Remarkable: Bringing Robotics AI to Embedded Platforms: Dataset Recording, VLA Fine‑Tuning, and On‑Device Optimizations</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://huggingface.co/blog/nxp/bringing-robotics-ai-to-embedded-platforms" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Hugging Face</div>
-                <div class="headline">Most Remarkable: Introducing Modular Diffusers - Composable Building Blocks for Diffusion Pipelines</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://huggingface.co/blog/modular-diffusers" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Google AI</div>
-                <div class="headline">Most Remarkable: Use Canvas in AI Mode to get things done and bring your ideas to life, right in Search.</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://blog.google/products-and-platforms/products/search/ai-mode-canvas-writing-coding/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Google AI</div>
-                <div class="headline">Most Remarkable: Create new worlds in Project Genie with these 4 tips</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/tips-prompt-writing-project-genie/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-            <div class="col-story col-divider">
-                <div class="story-source">Google AI</div>
-                <div class="headline">Most Remarkable: Gemini 3.1 Flash-Lite: Built for intelligence at scale</div>
-                <div class="story-body"></div>
-                <a class="story-link" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/" target="_blank">Read more &rarr;</a>
-            </div>
-            
-        </div>
         
 
         <!-- X/Twitter Dispatches -->
@@ -610,157 +374,156 @@
             <div class="three-col">
                 
                 <div class="col-story ">
-                    <div class="story-source">X (@askwhykartik)</div>
-                    <div class="headline">Most Remarkable: @askwhykartik: Here is a list of all  startup  accelerators you can apply to right now:
-
-  ($50...</div>
-                    <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/askwhykartik/status/2032387697054978431" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
-                    <div class="story-source">X (@Hesamation)</div>
-                    <div class="headline">Most Remarkable: @Hesamation: Claude made this video too....</div>
-                    <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/Hesamation/status/2032577834544226313" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
-                    <div class="story-source">X (@kalomaze)</div>
-                    <div class="headline">Most Remarkable: @kalomaze: Yann LeCun's  startup  having a cofounder with the surname LeBrun is some Luigi ...</div>
-                    <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/kalomaze/status/2032111370775474264" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
-                    <div class="story-source">X (@dotta)</div>
-                    <div class="headline">Most Remarkable: @dotta: Paperclip is the most exciting thing since Claude Code...</div>
-                    <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/dotta/status/2032957658794197448" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
-                    <div class="story-source">X (@shayne_coplan)</div>
-                    <div class="headline">Most Remarkable: @shayne_coplan: Excited to  announce  our partnership with   and TWG  AI  to build the next gene...</div>
-                    <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/shayne_coplan/status/2032108237932159113" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
-                    <div class="story-source">X (@StartupArchive_)</div>
-                    <div class="headline">Most Remarkable: @StartupArchive_: Sam Altman on how to build a “Facebook-sized company”
-
-“The best companies all h...</div>
-                    <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/StartupArchive_/status/2032849001859657998" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
-                    <div class="story-source">X (@MilksandMatcha)</div>
-                    <div class="headline">Most Remarkable: @MilksandMatcha: I graduated from MIT in 2023. It was the year (more like era) when it was especi...</div>
-                    <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/MilksandMatcha/status/2032513111283134762" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
-                    <div class="story-source">X (@damnang2)</div>
-                    <div class="headline">Most Remarkable: @damnang2: March 12 may have marked the official beginning of the optical era.
-
-Three optic...</div>
-                    <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/damnang2/status/2032710765317337326" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
-                    <div class="story-source">X (@audrlo)</div>
-                    <div class="headline">Most Remarkable: @audrlo: pov: you launched that  startup...</div>
-                    <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/audrlo/status/2032823563804197195" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
-                    <div class="story-source">X (@natolambert)</div>
-                    <div class="headline">Most Remarkable: @natolambert: World will converge on 3 types of models
-1. Closed frontier (Ant, OAI, Gemini)
-2...</div>
-                    <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/natolambert/status/2032500801558769801" target="_blank">View dispatch &rarr;</a>
-                </div>
-                
-                <div class="col-story col-divider">
                     <div class="story-source">X (@heynavtoor)</div>
-                    <div class="headline">Most Remarkable: @heynavtoor: BREAKING:  AI  can now write resumes like recruiters at  Google , Apple, and  Me...</div>
+                    <div class="headline">Most Remarkable: @heynavtoor: BREAKING:  OpenAI  published a paper proving that ChatGPT will always make thing...</div>
                     <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/heynavtoor/status/2032784547725906290" target="_blank">View dispatch &rarr;</a>
+                    <a class="story-link" href="https://x.com/heynavtoor/status/2030010676157239600" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@RenzTom)</div>
-                    <div class="headline">Most Remarkable: @RenzTom: This is accurate - I broke down the  law  on this. REAL ID is nothing more than ...</div>
+                    <div class="story-source">X (@Coinvo)</div>
+                    <div class="headline">Most Remarkable: @Coinvo: SCARY: For the first time in 30 years,  Nvidia  will not  release  any gaming GP...</div>
                     <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/RenzTom/status/2032644245895438502" target="_blank">View dispatch &rarr;</a>
+                    <a class="story-link" href="https://x.com/Coinvo/status/2032388700252852583" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@ProtonMail)</div>
-                    <div class="headline">Most Remarkable: @ProtonMail: No reply ≠ no response. 
+                    <div class="story-source">X (@OpenAI)</div>
+                    <div class="headline">Most Remarkable: @OpenAI: GPT-5.3 Instant in ChatGPT is now rolling out to everyone.
 
-RSVP with context using event reply notes in Proton Ma...</div>
+More accurate, less ...</div>
                     <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/ProtonMail/status/2032796423742165294" target="_blank">View dispatch &rarr;</a>
+                    <a class="story-link" href="https://x.com/OpenAI/status/2028893701427302559" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@ihtesham2005)</div>
-                    <div class="headline">Most Remarkable: @ihtesham2005: Not just  Anthropic .
+                    <div class="story-source">X (@unusual_whales)</div>
+                    <div class="headline">Most Remarkable: @unusual_whales: Google , Amazon, Microsoft,  OpenAI , Oracle, and xAI executives have signed a p...</div>
+                    <div class="story-body"></div>
+                    <a class="story-link" href="https://x.com/unusual_whales/status/2029310370230485264" target="_blank">View dispatch &rarr;</a>
+                </div>
+                
+                <div class="col-story col-divider">
+                    <div class="story-source">X (@UAPWatchers)</div>
+                    <div class="headline">Most Remarkable: @UAPWatchers: Kremlin Claims U.S. Biotech Could Trigger a 'Zombie Apocalypse'
 
-Here are 10  AI  companies offering free courses to maste...</div>
+Russia's former...</div>
                     <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/ihtesham2005/status/2028454139165118489" target="_blank">View dispatch &rarr;</a>
+                    <a class="story-link" href="https://x.com/UAPWatchers/status/2032960075002748938" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@blader)</div>
-                    <div class="headline">Most Remarkable: @blader: our  startup  just started mandating that every engineer must use FORTRAN.
+                    <div class="story-source">X (@romanbuildsaas)</div>
+                    <div class="headline">Most Remarkable: @romanbuildsaas: I had been following a YC  startup  for 6 months.
 
-and ...</div>
+Every week the founder was po...</div>
                     <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/blader/status/2032559825515851853" target="_blank">View dispatch &rarr;</a>
+                    <a class="story-link" href="https://x.com/romanbuildsaas/status/2032182430329659519" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@BrendanEich)</div>
-                    <div class="headline">Most Remarkable: @BrendanEich: Big Tech, and the IC/NGO/Academic censorship industrial complex. IDV is dual-use...</div>
+                    <div class="story-source">X (@NVIDIAGeForce)</div>
+                    <div class="headline">Most Remarkable: @NVIDIAGeForce: Welcome back to Raccoon City  
+
+Celebrate the  release  of Resident Evil Requiem...</div>
                     <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/BrendanEich/status/2032863335327346967" target="_blank">View dispatch &rarr;</a>
+                    <a class="story-link" href="https://x.com/NVIDIAGeForce/status/2027428515767828855" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@GoogleResearch)</div>
-                    <div class="headline">Most Remarkable: @GoogleResearch: Today we  announce  results from a first-of-its-kind study with   on AMIE, our c...</div>
+                    <div class="story-source">X (@gilileoB)</div>
+                    <div class="headline">Most Remarkable: @gilileoB: Continuing the tradition:
+honoring and remembering every American service member...</div>
                     <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/GoogleResearch/status/2031777657835139263" target="_blank">View dispatch &rarr;</a>
+                    <a class="story-link" href="https://x.com/gilileoB/status/2032863945921310862" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@natolambert)</div>
-                    <div class="headline">Most Remarkable: @natolambert: This looks like a model that's competitive with  GPT  OSS 120B or similar Qwen3....</div>
+                    <div class="story-source">X (@FourVork)</div>
+                    <div class="headline">Most Remarkable: @FourVork: The best  AI  courses are FREE as well:
+
+1.  Anthropic :  http:// 
+2.  Google : ...</div>
                     <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/natolambert/status/2031778912792166619" target="_blank">View dispatch &rarr;</a>
+                    <a class="story-link" href="https://x.com/FourVork/status/2028757931961749757" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@AjdDavison)</div>
-                    <div class="headline">Most Remarkable: @AjdDavison: Yes, this problem is called SLAM. There's been quite a lot of work on it, and ev...</div>
+                    <div class="story-source">X (@SleeplessAI_Lab)</div>
+                    <div class="headline">Most Remarkable: @SleeplessAI_Lab: The countdown to  ’s official  launch  has begun.
+
+Product highlights:
+1. Rich a...</div>
                     <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/AjdDavison/status/2032044921448751253" target="_blank">View dispatch &rarr;</a>
+                    <a class="story-link" href="https://x.com/SleeplessAI_Lab/status/2032726716003856391" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
                 <div class="col-story col-divider">
-                    <div class="story-source">X (@vllm_project)</div>
-                    <div class="headline">Most Remarkable: @vllm_project:  Congrats to   on the  release  of Nemotron 3 Super — day-0 support in vLLM v0.1...</div>
+                    <div class="story-source">X (@cryptodude999)</div>
+                    <div class="headline">Most Remarkable: @cryptodude999: X is giving your data to the Israelis.
+
+Said it before I'll say it again. It is ...</div>
                     <div class="story-body"></div>
-                    <a class="story-link" href="https://x.com/vllm_project/status/2031779213527957732" target="_blank">View dispatch &rarr;</a>
+                    <a class="story-link" href="https://x.com/cryptodude999/status/2028537129064968250" target="_blank">View dispatch &rarr;</a>
+                </div>
+                
+                <div class="col-story col-divider">
+                    <div class="story-source">X (@ycombinator)</div>
+                    <div class="headline">Most Remarkable: @ycombinator: Parker from Perfectly is your  AI  career super-connector on iMessage and WhatsA...</div>
+                    <div class="story-body"></div>
+                    <a class="story-link" href="https://x.com/ycombinator/status/2032211697394729407" target="_blank">View dispatch &rarr;</a>
+                </div>
+                
+                <div class="col-story col-divider">
+                    <div class="story-source">X (@ycombinator)</div>
+                    <div class="headline">Most Remarkable: @ycombinator: Doomersion ( ) lets you learn languages by doomscrolling. It shows you short vid...</div>
+                    <div class="story-body"></div>
+                    <a class="story-link" href="https://x.com/ycombinator/status/2031807370863739072" target="_blank">View dispatch &rarr;</a>
+                </div>
+                
+                <div class="col-story col-divider">
+                    <div class="story-source">X (@divyaporwal_)</div>
+                    <div class="headline">Most Remarkable: @divyaporwal_: This is literally not the correct way to ask for help.
+Using some Chrome extensi...</div>
+                    <div class="story-body"></div>
+                    <a class="story-link" href="https://x.com/divyaporwal_/status/2029791481431740522" target="_blank">View dispatch &rarr;</a>
+                </div>
+                
+                <div class="col-story col-divider">
+                    <div class="story-source">X (@ycombinator)</div>
+                    <div class="headline">Most Remarkable: @ycombinator: .  creates  AI  automations that write themselves.
+
+They learn how you work, and...</div>
+                    <div class="story-body"></div>
+                    <a class="story-link" href="https://x.com/ycombinator/status/2029346153171481021" target="_blank">View dispatch &rarr;</a>
+                </div>
+                
+                <div class="col-story col-divider">
+                    <div class="story-source">X (@Micks_it)</div>
+                    <div class="headline">Most Remarkable: @Micks_it: Dear    just saw a tweet where an FIR of a sexual assault has been shared with n...</div>
+                    <div class="story-body"></div>
+                    <a class="story-link" href="https://x.com/Micks_it/status/2031411131764584460" target="_blank">View dispatch &rarr;</a>
+                </div>
+                
+                <div class="col-story col-divider">
+                    <div class="story-source">X (@ycombinator)</div>
+                    <div class="headline">Most Remarkable: @ycombinator: Fenrock  AI  ( ) is building back office  AI  agents for banks. and private lend...</div>
+                    <div class="story-body"></div>
+                    <a class="story-link" href="https://x.com/ycombinator/status/2031067492433670311" target="_blank">View dispatch &rarr;</a>
+                </div>
+                
+                <div class="col-story col-divider">
+                    <div class="story-source">X (@MatthewBerman)</div>
+                    <div class="headline">Most Remarkable: @MatthewBerman: Two of our most important safety principles are prohibitions on domestic mass  s...</div>
+                    <div class="story-body"></div>
+                    <a class="story-link" href="https://x.com/MatthewBerman/status/2027579405091139961" target="_blank">View dispatch &rarr;</a>
+                </div>
+                
+                <div class="col-story col-divider">
+                    <div class="story-source">X (@WesRoth)</div>
+                    <div class="headline">Most Remarkable: @WesRoth: Anthropic is refusing to lift its contractual restrictions that prevent its AI t...</div>
+                    <div class="story-body"></div>
+                    <a class="story-link" href="https://x.com/WesRoth/status/2027020831470366889" target="_blank">View dispatch &rarr;</a>
                 </div>
                 
             </div>
@@ -775,93 +538,9 @@ and ...</div>
             <div class="github-grid">
                 
                 <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/volcengine/OpenViking" target="_blank">volcengine/OpenViking</a></div>
-                    <div class="repo-meta">10976 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">OpenViking is an open-source context database designed specifically for AI Agents(such as openclaw). OpenViking unifies the management of context (memory, resources, and skills) that Agents need through a file system paradigm, enabling hierarchical context delivery and self-evolving.</div>
-                    <div class="repo-desc"></div>
-                </div>
-                
-                <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/p-e-w/heretic" target="_blank">p-e-w/heretic</a></div>
-                    <div class="repo-meta">13994 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">Fully automatic censorship removal for language models</div>
-                    <div class="repo-desc"></div>
-                </div>
-                
-                <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/langflow-ai/openrag" target="_blank">langflow-ai/openrag</a></div>
-                    <div class="repo-meta">2805 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">OpenRAG is a comprehensive, single package Retrieval-Augmented Generation platform built on Langflow, Docling, and Opensearch.</div>
-                    <div class="repo-desc"></div>
-                </div>
-                
-                <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/lightpanda-io/browser" target="_blank">lightpanda-io/browser</a></div>
-                    <div class="repo-meta">17370 stars &middot; Zig</div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">Lightpanda: the headless browser designed for AI and automation</div>
-                    <div class="repo-desc"></div>
-                </div>
-                
-                <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/msitarzewski/agency-agents" target="_blank">msitarzewski/agency-agents</a></div>
-                    <div class="repo-meta">44386 stars &middot; Shell</div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.</div>
-                    <div class="repo-desc"></div>
-                </div>
-                
-                <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/InsForge/InsForge" target="_blank">InsForge/InsForge</a></div>
-                    <div class="repo-meta">4282 stars &middot; TypeScript</div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">Give agents everything they need to ship fullstack apps. The backend built for agentic development.</div>
-                    <div class="repo-desc"></div>
-                </div>
-                
-                <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/obra/superpowers" target="_blank">obra/superpowers</a></div>
-                    <div class="repo-meta">83890 stars &middot; Shell</div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">An agentic skills framework & software development methodology that works.</div>
-                    <div class="repo-desc"></div>
-                </div>
-                
-                <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/matteorigodanza/cryto-trading-ai-assistant" target="_blank">matteorigodanza/cryto-trading-ai-assistant</a></div>
-                    <div class="repo-meta">65 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">AI guardian for manual crypto traders — risk monitoring, strategy validation & emotional trading detection. No trade execution.</div>
-                    <div class="repo-desc"></div>
-                </div>
-                
-                <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/delmore77/ai-automated-trading-bot" target="_blank">delmore77/ai-automated-trading-bot</a></div>
-                    <div class="repo-meta">36 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">TradingView webhook bot for manual traders – execute alerts on Binance, Bybit, OKX, and Hyperliquid with risk limits, TP/SL, trailing stop, and optional AI review.</div>
-                    <div class="repo-desc"></div>
-                </div>
-                
-                <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/Ashfaqbs/TinyLLM-usecases" target="_blank">Ashfaqbs/TinyLLM-usecases</a></div>
-                    <div class="repo-meta">15 stars &middot; Python</div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">a collection of tiny llms with usecases</div>
-                    <div class="repo-desc"></div>
-                </div>
-                
-                <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/evgenii-engineer/openLight" target="_blank">evgenii-engineer/openLight</a></div>
-                    <div class="repo-meta">15 stars &middot; Go</div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">Lightweight AI agent runtime for Raspberry Pi and homelabs, built around deterministic skills and local LLMs.</div>
-                    <div class="repo-desc"></div>
-                </div>
-                
-                <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/THUDM/IndexCache" target="_blank">THUDM/IndexCache</a></div>
-                    <div class="repo-meta">11 stars &middot; </div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse</div>
-                    <div class="repo-desc"></div>
-                </div>
-                
-                <div class="repo-card">
-                    <div class="repo-name"><a href="https://github.com/jonas1ara/Llama.fs" target="_blank">jonas1ara/Llama.fs</a></div>
-                    <div class="repo-meta">10 stars &middot; F#</div>
-                    <div class="repo-desc" style="font-style: italic; color: #5a4a3a;">LLM inference in F#</div>
+                    <div class="repo-name"><a href="https://github.com/rzru/nightingale" target="_blank">rzru/nightingale</a></div>
+                    <div class="repo-meta">10 stars &middot; Rust</div>
+                    <div class="repo-desc" style="font-style: italic; color: var(--accent);">Machine learning powered Karaoke app (with scores!) </div>
                     <div class="repo-desc"></div>
                 </div>
                 
@@ -876,9 +555,43 @@ and ...</div>
         </div>
     </div>
 
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle dark mode">
+        &#9790;
+    </button>
+
     <button class="read-aloud-btn" id="readAloudBtn" onclick="toggleReadAloud()">
         Read Aloud
     </button>
+
+    <script>
+    // --- Theme ---
+    (function() {
+        const saved = localStorage.getItem('theme');
+        if (saved) {
+            document.documentElement.setAttribute('data-theme', saved);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        updateToggleIcon();
+    })();
+
+    function updateToggleIcon() {
+        const btn = document.getElementById('themeToggle');
+        if (btn) {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            btn.innerHTML = isDark ? '&#9788;' : '&#9790;';
+            btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+        }
+    }
+
+    function toggleTheme() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const next = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateToggleIcon();
+    }
+    </script>
 
     <script>
     let isPlaying = false;

@@ -4,3 +4,4 @@ feedparser
 jinja2
 scrapling
 python-telegram-bot
+schedule

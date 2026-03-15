@@ -7,11 +7,43 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #f5f0e1;
+            --text: #2c1810;
+            --paper: #faf6eb;
+            --paper-border: #d4c9a8;
+            --paper-shadow: rgba(0,0,0,0.1);
+            --accent: #5a4a3a;
+            --muted: #8a7a6a;
+            --rule: #a09080;
+            --editorial-bg: #f0ead8;
+            --card-border: #c4b998;
+            --btn-bg: #2c1810;
+            --btn-text: #f5f0e1;
+            --btn-hover: #4a3020;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1a1410;
+            --text: #d4c4a8;
+            --paper: #241e16;
+            --paper-border: #3a3228;
+            --paper-shadow: rgba(0,0,0,0.4);
+            --accent: #b0a48e;
+            --muted: #8a7e68;
+            --rule: #4a4238;
+            --editorial-bg: #2a2218;
+            --card-border: #3a3228;
+            --btn-bg: #d4c4a8;
+            --btn-text: #1a1410;
+            --btn-hover: #c4b498;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: #f5f0e1;
-            color: #2c1810;
+            background: var(--bg);
+            color: var(--text);
             font-family: 'Libre Baskerville', 'Times New Roman', serif;
             font-size: 15px;
             line-height: 1.6;
@@ -21,22 +53,22 @@
             max-width: 960px;
             margin: 20px auto;
             padding: 40px 50px;
-            background: #faf6eb;
-            border: 1px solid #d4c9a8;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            background: var(--paper);
+            border: 1px solid var(--paper-border);
+            box-shadow: 0 2px 20px var(--paper-shadow);
         }
 
         /* --- Masthead --- */
         .masthead {
             text-align: center;
-            border-bottom: 4px double #2c1810;
+            border-bottom: 4px double var(--text);
             padding-bottom: 15px;
             margin-bottom: 5px;
         }
 
         .masthead-rule-top {
             border: none;
-            border-top: 1px solid #2c1810;
+            border-top: 1px solid var(--text);
             margin-bottom: 8px;
         }
 
@@ -53,7 +85,7 @@
             font-style: italic;
             font-size: 14px;
             margin: 5px 0;
-            color: #5a4a3a;
+            color: var(--accent);
         }
 
         .masthead-meta {
@@ -63,7 +95,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-top: 8px;
-            color: #5a4a3a;
+            color: var(--accent);
         }
 
         /* --- Ornamental Rules --- */
@@ -71,27 +103,27 @@
             text-align: center;
             margin: 15px 0;
             font-size: 18px;
-            color: #8a7a6a;
+            color: var(--muted);
         }
 
         .thick-rule {
             border: none;
-            border-top: 3px solid #2c1810;
+            border-top: 3px solid var(--text);
             margin: 15px 0;
         }
 
         .thin-rule {
             border: none;
-            border-top: 1px solid #a09080;
+            border-top: 1px solid var(--rule);
             margin: 12px 0;
         }
 
         /* --- Editorial --- */
         .editorial {
-            border: 2px solid #2c1810;
+            border: 2px solid var(--text);
             padding: 20px 25px;
             margin: 20px 0;
-            background: #f0ead8;
+            background: var(--editorial-bg);
         }
 
         .editorial h2 {
@@ -136,7 +168,7 @@
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #8a7a6a;
+            color: var(--muted);
             margin-bottom: 8px;
         }
 
@@ -149,13 +181,13 @@
             display: inline-block;
             margin-top: 8px;
             font-size: 12px;
-            color: #5a4a3a;
+            color: var(--accent);
             text-decoration: none;
             font-style: italic;
         }
 
         .story-link:hover {
-            color: #2c1810;
+            color: var(--text);
             text-decoration: underline;
         }
 
@@ -180,7 +212,7 @@
         }
 
         .col-divider {
-            border-left: 1px solid #a09080;
+            border-left: 1px solid var(--rule);
             padding-left: 25px;
         }
 
@@ -205,9 +237,9 @@
         }
 
         .repo-card {
-            border: 1px solid #c4b998;
+            border: 1px solid var(--card-border);
             padding: 15px;
-            background: #f0ead8;
+            background: var(--editorial-bg);
         }
 
         .repo-card .repo-name {
@@ -217,7 +249,7 @@
         }
 
         .repo-card .repo-name a {
-            color: #2c1810;
+            color: var(--text);
             text-decoration: none;
         }
 
@@ -227,7 +259,7 @@
 
         .repo-meta {
             font-size: 11px;
-            color: #8a7a6a;
+            color: var(--muted);
             margin: 5px 0;
         }
 
@@ -241,9 +273,9 @@
             text-align: center;
             margin-top: 30px;
             padding-top: 15px;
-            border-top: 4px double #2c1810;
+            border-top: 4px double var(--text);
             font-size: 11px;
-            color: #8a7a6a;
+            color: var(--muted);
             letter-spacing: 1px;
         }
 
@@ -252,9 +284,9 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: #2c1810;
-            color: #f5f0e1;
-            border: 2px solid #8a7a6a;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: 2px solid var(--muted);
             padding: 12px 20px;
             font-family: 'Playfair Display', serif;
             font-size: 14px;
@@ -265,7 +297,28 @@
         }
 
         .read-aloud-btn:hover {
-            background: #4a3020;
+            background: var(--btn-hover);
+        }
+
+        /* --- Theme Toggle --- */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: 2px solid var(--muted);
+            padding: 10px 16px;
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 100;
+            transition: background 0.2s;
+            line-height: 1;
+        }
+
+        .theme-toggle:hover {
+            background: var(--btn-hover);
         }
 
         .read-aloud-btn.playing {
@@ -285,7 +338,7 @@
             .lead-section { grid-template-columns: 1fr; }
             .three-col { grid-template-columns: 1fr; }
             .github-grid { grid-template-columns: 1fr; }
-            .col-divider { border-left: none; padding-left: 0; border-top: 1px solid #a09080; padding-top: 15px; }
+            .col-divider { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 15px; }
             .lead-story .headline { font-size: 24px; }
         }
     </style>
@@ -323,7 +376,7 @@
                 <a class="story-link" href="{{ news_stories[0].url }}" target="_blank">Continue reading &rarr;</a>
             </div>
             {% if news_stories|length > 1 %}
-            <div class="second-story" style="border-left: 1px solid #a09080; padding-left: 30px;">
+            <div class="second-story" style="border-left: 1px solid var(--rule); padding-left: 30px;">
                 <div class="story-source">{{ news_stories[1].source }}</div>
                 <div class="headline">{{ news_stories[1].headline }}</div>
                 <div class="story-body">{{ news_stories[1].body }}</div>
@@ -376,7 +429,7 @@
                 <div class="repo-card">
                     <div class="repo-name"><a href="{{ repo.url }}" target="_blank">{{ repo.title }}</a></div>
                     <div class="repo-meta">{{ repo.stars }} stars &middot; {{ repo.language }}</div>
-                    {% if repo.summary %}<div class="repo-desc" style="font-style: italic; color: #5a4a3a;">{{ repo.summary }}</div>{% endif %}
+                    {% if repo.summary %}<div class="repo-desc" style="font-style: italic; color: var(--accent);">{{ repo.summary }}</div>{% endif %}
                     <div class="repo-desc">{{ repo.body }}</div>
                 </div>
                 {% endfor %}
@@ -391,9 +444,43 @@
         </div>
     </div>
 
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle dark mode">
+        &#9790;
+    </button>
+
     <button class="read-aloud-btn" id="readAloudBtn" onclick="toggleReadAloud()">
         Read Aloud
     </button>
+
+    <script>
+    // --- Theme ---
+    (function() {
+        const saved = localStorage.getItem('theme');
+        if (saved) {
+            document.documentElement.setAttribute('data-theme', saved);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        updateToggleIcon();
+    })();
+
+    function updateToggleIcon() {
+        const btn = document.getElementById('themeToggle');
+        if (btn) {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            btn.innerHTML = isDark ? '&#9788;' : '&#9790;';
+            btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+        }
+    }
+
+    function toggleTheme() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const next = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateToggleIcon();
+    }
+    </script>
 
     <script>
     let isPlaying = false;

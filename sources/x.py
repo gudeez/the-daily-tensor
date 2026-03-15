@@ -179,7 +179,8 @@ def _scrape_trending():
         page = StealthyFetcher.fetch(
             "https://x.com/explore/tabs/trending",
             headless=True,
-            network_idle=True,
+            network_idle=False,
+            wait_selector='[data-testid="trend"]',
         )
 
         # Trending items are in spans within the explore page
