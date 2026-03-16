@@ -90,14 +90,12 @@ def _generate(prompt, max_tokens=300, label="generate"):
 
 
 def summarize(story):
-    """Summarize a story in Victorian newspaper voice."""
+    """Summarize a story in plain English."""
     source_note = ""
-    if story.get("type") == "x_post":
-        source_note = f"This is a post from X/Twitter by {story.get('source', 'unknown')}."
-    elif story.get("type") == "github":
+    if story.get("type") == "github":
         source_note = f"This is a GitHub repository. Stars: {story.get('stars', 'N/A')}. Language: {story.get('language', 'N/A')}."
 
-    prompt = f"""You are the editor of "The Daily Tensor," a newspaper from the 1880s that covers artificial intelligence news. Write a 2-3 sentence summary of this item in the voice of a Victorian-era journalist. Be informative but colorful. Do not use modern slang.
+    prompt = f"""Write a clear, concise 2-3 sentence summary of this item in plain English. Be informative and direct. No fluff.
 
 Title: {story['title']}
 Summary: {story.get('summary', 'No details available.')}
@@ -110,25 +108,20 @@ Write ONLY the summary, no preamble:"""
 
 
 def generate_headline(story):
-    """Generate a dramatic 1880s-style headline."""
-    prompt = f"""You MUST rewrite this headline completely in the dramatic style of an 1880s newspaper. Do NOT repeat the original headline. Make it sensational, Victorian, and punchy. Use title case. Keep it under 15 words.
+    """Generate a clear, punchy headline."""
+    prompt = f"""Rewrite this headline to be clear, concise, and attention-grabbing. Use title case. Keep it under 15 words. No Victorian language.
 
 Original: {story['title']}
 Context: {story.get('summary', '')[:200]}
 
-Example rewrites:
-- "Meta lays off employees" -> "Great Upheaval at Meta as Thousands Cast Into the Streets"
-- "New AI model released" -> "Astonishing Mechanical Brain Unveiled to Thunderous Acclaim"
-- "OpenAI raises funding" -> "Vast Fortune Pledged to the Architects of Artificial Thought"
-
-Your dramatic Victorian rewrite:"""
+Your rewrite:"""
 
     result = _generate(prompt, max_tokens=50, label=f"headline [{story['title'][:40]}]")
     # Clean up - remove quotes, extra whitespace
     result = result.strip('"\'').strip()
     # If the LLM just returned the original, flag it
     if not result or result.lower() == story["title"].lower():
-        return f"Most Remarkable: {story['title']}"
+        return story["title"]
     return result
 
 
@@ -139,7 +132,7 @@ def editorialize(stories):
         briefs.append(f"{i}. {s['title']}: {s.get('summary', '')[:150]}")
     stories_text = "\n".join(briefs)
 
-    prompt = f"""You are the editor-in-chief of "The Daily Tensor," an 1880s newspaper covering artificial intelligence. Write a short Editor's Column (3-4 sentences) identifying the overarching themes in today's stories. Write in a Victorian editorial voice — authoritative, slightly pompous, but genuinely excited about the progress of science.
+    prompt = f"""Write a short Editor's Column (3-4 sentences) identifying the overarching themes in today's AI and tech stories. Be insightful and direct. No Victorian language.
 
 Today's stories:
 {stories_text}

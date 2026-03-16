@@ -26,7 +26,14 @@ def _save_seen(seen):
 
 
 def _process_story(story):
-    """Run a story through the LLM for headline + summary."""
+    """Run a story through the LLM for headline + summary. X posts pass through raw."""
+    if story.get("type") == "x_post":
+        return {
+            **story,
+            "headline": story["title"],
+            "body": story.get("summary", ""),
+        }
+
     print(f"  Processing: {story['title'][:60]}...")
     headline = generate_headline(story)
     body = summarize(story)
@@ -95,7 +102,8 @@ def build_edition(send_telegram=True):
     # --- Process through LLM ---
     reset_stats()
     print(f"\n[4/5] Processing {total} stories through Qwen 3.5...")
-    print(f"       ({len(news_to_process)} news + {len(x_to_process)} X + {len(gh_to_process)} GitHub) x 2 LLM calls each = ~{total * 2} calls")
+    llm_stories = len(news_to_process) + len(gh_to_process)
+    print(f"       ({len(news_to_process)} news + {len(gh_to_process)} GitHub) x 2 LLM calls + {len(x_to_process)} X passthrough = ~{llm_stories * 2} calls")
 
     print("\n  --- News Stories ---")
     news_processed = [_process_story(s) for s in news_to_process]
