@@ -10,7 +10,7 @@ from config import EDITIONS_DIR, DATA_DIR, SEEN_FILE, MAX_STORIES, BASE_DIR
 from sources.rss import fetch_all_feeds
 from sources.github import fetch_trending, fetch_notable_repos
 from sources.x import fetch_x_posts
-from processor import summarize, generate_headline, editorialize, generate_telegram_digest
+from processor import summarize, generate_headline, editorialize, generate_telegram_digest, get_stats, reset_stats
 from telegram_bot import send_edition_to_telegram
 
 
@@ -93,7 +93,9 @@ def build_edition(send_telegram=True):
         return None
 
     # --- Process through LLM ---
+    reset_stats()
     print(f"\n[4/5] Processing {total} stories through Qwen 3.5...")
+    print(f"       ({len(news_to_process)} news + {len(x_to_process)} X + {len(gh_to_process)} GitHub) x 2 LLM calls each = ~{total * 2} calls")
 
     print("\n  --- News Stories ---")
     news_processed = [_process_story(s) for s in news_to_process]
@@ -108,10 +110,28 @@ def build_edition(send_telegram=True):
     print("\n  Writing editor's column...")
     editorial = editorialize(all_stories)
 
+    # --- LLM stats summary ---
+    stats = get_stats()
+    print(f"\n  {'-'*50}")
+    print(f"  LLM Stats: {stats['success']}/{stats['calls']} succeeded, {stats['failed']} failed, {stats['retries']} retries")
+    print(f"  Total LLM time: {stats['total_time']:.1f}s ({stats['total_time']/60:.1f}m) | ~{stats['total_tokens']} tokens")
+    if stats['success'] > 0:
+        print(f"  Avg per call: {stats['total_time']/stats['success']:.1f}s")
+    print(f"  {'-'*50}")
+
     # --- Render HTML ---
     print("\n[5/5] Rendering newspaper...")
     env = Environment(loader=FileSystemLoader(BASE_DIR / "templates"))
     template = env.get_template("newspaper.html")
+
+    # Find previous edition for pagination
+    EDITIONS_DIR.mkdir(parents=True, exist_ok=True)
+    existing = sorted(f.stem for f in EDITIONS_DIR.glob("2*.html"))
+    prev_edition = None
+    for ed in reversed(existing):
+        if ed < date_str:
+            prev_edition = ed
+            break
 
     html = template.render(
         date=date_str,
@@ -122,15 +142,26 @@ def build_edition(send_telegram=True):
         news_stories=news_processed,
         x_stories=x_processed,
         github_stories=gh_processed,
+        prev_edition=prev_edition,
+        next_edition=None,
     )
 
     # Write edition files
-    EDITIONS_DIR.mkdir(parents=True, exist_ok=True)
     edition_path = EDITIONS_DIR / f"{date_str}.html"
     latest_path = EDITIONS_DIR / "latest.html"
 
-    edition_path.write_text(html)
-    latest_path.write_text(html)
+    edition_path.write_text(html, encoding="utf-8")
+    latest_path.write_text(html, encoding="utf-8")
+
+    # Update previous edition to link forward to this one
+    if prev_edition:
+        prev_path = EDITIONS_DIR / f"{prev_edition}.html"
+        if prev_path.exists():
+            prev_html = prev_path.read_text(encoding="utf-8")
+            prev_html = prev_html.replace(
+                'data-next=""', f'data-next="{date_str}"'
+            )
+            prev_path.write_text(prev_html, encoding="utf-8")
     print(f"  Saved: {edition_path}")
     print(f"  Saved: {latest_path}")
 

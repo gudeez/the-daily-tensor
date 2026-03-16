@@ -325,6 +325,31 @@
             background: #8b0000;
         }
 
+        /* --- Pagination --- */
+        .page-link {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            color: var(--text);
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid var(--card-border);
+            transition: background 0.2s;
+        }
+
+        .page-link:hover {
+            background: var(--editorial-bg);
+            text-decoration: none;
+        }
+
+        .page-link-disabled {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            color: var(--muted);
+            padding: 8px 16px;
+            border: 1px solid var(--card-border);
+            opacity: 0.5;
+        }
+
         /* --- Print --- */
         @media print {
             body { background: white; }
@@ -436,6 +461,28 @@
             </div>
         </div>
         {% endif %}
+
+        <!-- Pagination -->
+        <div class="pagination" data-next="{{ next_edition or '' }}">
+            <hr class="thick-rule">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+                {% if prev_edition %}
+                <a href="{{ prev_edition }}.html" class="page-link">&larr; Previous Edition</a>
+                {% else %}
+                <span class="page-link-disabled">&larr; First Edition</span>
+                {% endif %}
+
+                <span style="font-family: 'Playfair Display', serif; font-size: 13px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase;">
+                    Edition No. {{ edition_number }}
+                </span>
+
+                {% if next_edition %}
+                <a href="{{ next_edition }}.html" class="page-link">Next Edition &rarr;</a>
+                {% else %}
+                <span class="page-link-disabled">Latest Edition &rarr;</span>
+                {% endif %}
+            </div>
+        </div>
 
         <!-- Footer -->
         <div class="footer">

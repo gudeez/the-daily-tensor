@@ -216,7 +216,8 @@ def _scrape_search(query):
     try:
         kwargs = {
             "headless": True,
-            "network_idle": True,
+            "network_idle": False,
+            "wait_selector": '[data-testid="tweet"]',
         }
         if cookies:
             kwargs["cookies"] = cookies
@@ -261,7 +262,8 @@ def _scrape_profile(account):
     try:
         kwargs = {
             "headless": True,
-            "network_idle": True,
+            "network_idle": False,
+            "wait_selector": '[data-testid="tweet"]',
         }
         if cookies:
             kwargs["cookies"] = cookies
@@ -328,24 +330,22 @@ def _cluster_posts(posts, threshold=0.4):
     return [posts[c[0]] for c in clusters]
 
 
-# Accounts organized by vertical — high-frequency posters
+# Accounts organized by vertical — high-signal posters (trimmed to limit memory)
 ACCOUNTS = {
     "AI": [
-        "AnthropicAI", "OpenAI", "GoogleDeepMind", "huggingface",
-        "MistralAI", "AIatMeta", "NVIDIAAIDev", "CohereAI",
-        "karpathy", "ylecun", "DrJimFan", "AravSrinivas",
-        "ClemDelangue", "sama", "GaryMarcus",
+        "AnthropicAI", "OpenAI", "GoogleDeepMind",
+        "karpathy", "sama",
     ],
     "Crypto": [
-        "VitalikButerin", "punk6529", "CoinDesk", "TheBlock__",
-        "coinaboretelegraph", "brian_armstrong", "caboroYakovenko",
-        "jessePollak", "ethereum", "solana",
+        "VitalikButerin", "CoinDesk", "ethereum",
     ],
     "Privacy": [
-        "EFF", "Snowden", "signalapp", "ProtonMail",
-        "torproject", "privacyint",
+        "EFF", "signalapp", "ProtonMail",
     ],
 }
+
+# Max accounts to scrape per vertical (each launches a browser instance)
+MAX_ACCOUNTS_PER_VERTICAL = 3
 
 
 def fetch_x_posts():
@@ -397,7 +397,7 @@ def fetch_x_posts():
         print("  [X] Search requires login, scraping accounts by vertical...")
         for vertical, accts in ACCOUNTS.items():
             print(f"  [X] --- {vertical} ---")
-            for account in accts:
+            for account in accts[:MAX_ACCOUNTS_PER_VERTICAL]:
                 print(f"  [X] Scraping @{account}...")
                 posts = _scrape_profile(account)
                 all_posts.extend(posts)
